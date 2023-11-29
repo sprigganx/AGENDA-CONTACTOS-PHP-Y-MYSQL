@@ -2,9 +2,34 @@ $(document).ready(function() {
 
     $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
 
+    $('#btnGuardarCategoria').click(function(){
+		agregarCategoria()
+    });
+
+	$('#btnActualizarCategoria').click(function(){
+		actualizarCategoria();
+	});
 });
 
-function eliminarCategoria(){
+function agregarCategoria(){
+	$.ajax({
+		type: "POST",
+		data: $('#frmAgregarCategoria').serialize(),
+		url: "procesos/categorias/agregarCategoria.php",
+		success:function(respuesta){
+			respuesta = respuesta.trim();
+			if(respuesta == 1){
+				$('#frmAgregarCategoria')[0].reset();
+        		$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+				swal(":D","Se agrego con éxito","success");
+			}else{
+				swal(":(","No se pudo agregar","error");
+			}
+		}
+	});
+}
+
+function eliminarCategoria(idCategoria){
     swal({
         title: "¿Está seguro de eliminar esta categoría?",
         text: "¡Una vez eliminado, no podrá ser recuperado!",
@@ -14,7 +39,52 @@ function eliminarCategoria(){
       })
       .then((willDelete) => {
         if (willDelete) {
-          swal("¡Se ha eliminado!");
+          $.ajax({
+            type: "POST",
+            data: "idCategoria=" + idCategoria,
+            url: "procesos/categorias/eliminarCategoria.php",
+            success:function(respuesta) {
+              respuesta = respuesta.trim();
+              if (respuesta == 1) {
+                $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+                swal(":D","Se elimino con exito!","success");
+              } else {
+                swal(":(","No se pudo eliminar!","error");
+              }
+            }
+          });
         }
       });
+}
+
+function obtenerDatosCategoria(idCategoria){
+	$.ajax({
+			type:"POST",
+			data:"idCategoria=" + idCategoria,
+			url:"procesos/categorias/obtenerDatosCategoria.php",
+			success:function(respuesta) {
+				respuesta = jQuery.parseJSON(respuesta);
+
+				$('#idCategoria').val(respuesta['idCategoria']);
+				$('#nombreCategoriaU').val(respuesta['nombre']);
+				$('#descripcionU').val(respuesta['descripcion']);
+			}
+	});
+}
+
+function actualizarCategoria(){
+	$.ajax({
+		type: "POST",
+		data: $('#frmActualizarCategoria').serialize(),
+		url: "procesos/categorias/actualizarCategoria.php",
+		success:function(respuesta){
+			respuesta = respuesta.trim();
+			if(respuesta == 1){
+        		$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+				swal(":D","¡Se actualizó con éxito!","success");
+			}else{
+				swal(":(","¡No se pudo actualizar!","error");
+			}
+		}
+	});
 }
