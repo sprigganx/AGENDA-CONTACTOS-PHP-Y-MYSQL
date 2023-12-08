@@ -1,0 +1,16 @@
+    .btn-label {
+        display: inline-block;
+        padding: 6px 12px; /* Ajusta el padding según sea necesario */
+        font-size: 14px; /* Ajusta el tamaño de fuente según sea necesario */
+        line-height: 1.42857143;
+        color: #333;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Estilo adicional para el icono dentro del label */
+    .btn-label i {
+        margin-right: 5px; /* Ajusta el margen derecho según sea necesario */
+    }
