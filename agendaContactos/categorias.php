@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="public/img/spriggan_icon.png">
+    <link rel="icon" type="image/png" href="bdsjs/img/spriggan_icon.png">
     <title>Categorias Conctactos</title>
-    <?php require_once "dependencias.php"; ?>
+    <?php require_once "archivosDependencias.php"; ?>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         ?>
     </div>
     
-    <script src="public/js/categorias.js"></script>
+    <script src="js/categorias.js"></script>
 </body>
 
 </html>

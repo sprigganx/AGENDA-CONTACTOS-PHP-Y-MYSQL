@@ -3,6 +3,7 @@
     require_once "Conexion.php";
 
     class Categorias extends Conexion{
+		
         public function agregarCategoria($datos){
             $conexion = Conexion::conectar();
             $sql = "INSERT INTO t_categorias (nombre, descripcion) 

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="public/img/spriggan_icon.png">
+    <link rel="icon" type="image/png" href="bdsjs/img/spriggan_icon.png">
     <title>Agenda de conctactos web</title>
-    <?php require_once "dependencias.php"; ?>
+    <?php require_once "archivosDependencias.php"; ?>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <img src="public/img/fotoperfil.jpg" class="img-fluid" alt="Responsive image">
+                            <img src="bdsjs/img/fotoperfil.jpg" class="img-fluid" alt="Responsive image">
                         </div>
                     </div>
                 </div>

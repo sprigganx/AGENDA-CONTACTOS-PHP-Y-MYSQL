@@ -1,10 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function(){
 
-    $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+	$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+	
+	$('#btnGuardarCategoria').click(function(){
 
-    $('#btnGuardarCategoria').click(function(){
-		agregarCategoria()
-    });
+		if ($('#nombreCategoria').val() == "") {
+			swal("Debes agregar un nombre de categoria!");
+			return false;
+		}
+
+		agregarCategoria();
+	});
 
 	$('#btnActualizarCategoria').click(function(){
 		actualizarCategoria();
@@ -24,6 +30,24 @@ function agregarCategoria(){
 				swal(":D","Se agrego con éxito","success");
 			}else{
 				swal(":(","No se pudo agregar","error");
+			}
+		}
+	});
+}
+
+function actualizarCategoria(){
+	$.ajax({
+		type: "POST",
+		data: $('#frmActualizarCategoria').serialize(),
+		url: "procesos/categorias/actualizarCategoria.php",
+		success:function(respuesta){
+			respuesta = respuesta.trim();
+			if(respuesta == 1){
+				$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+				$('#modalActualizarCategoria').modal("toggle");
+				swal(":D","¡Se actualizó con éxito!","success");
+			}else{
+				swal(":(","¡No se pudo actualizar!","error");
 			}
 		}
 	});
@@ -69,22 +93,5 @@ function obtenerDatosCategoria(idCategoria){
 				$('#nombreCategoriaU').val(respuesta['nombre']);
 				$('#descripcionU').val(respuesta['descripcion']);
 			}
-	});
-}
-
-function actualizarCategoria(){
-	$.ajax({
-		type: "POST",
-		data: $('#frmActualizarCategoria').serialize(),
-		url: "procesos/categorias/actualizarCategoria.php",
-		success:function(respuesta){
-			respuesta = respuesta.trim();
-			if(respuesta == 1){
-        		$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
-				swal(":D","¡Se actualizó con éxito!","success");
-			}else{
-				swal(":(","¡No se pudo actualizar!","error");
-			}
-		}
 	});
 }
