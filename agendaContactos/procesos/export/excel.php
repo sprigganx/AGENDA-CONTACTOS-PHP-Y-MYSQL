@@ -25,7 +25,6 @@ $result = mysqli_query($conexion, $sql);
 // Abrir el buffer de salida
 $output = fopen("php://output", "w");
 
-// Cambiar el delimitador a punto y coma
 $delimiter = ";";
 
 // Encabezados CSV

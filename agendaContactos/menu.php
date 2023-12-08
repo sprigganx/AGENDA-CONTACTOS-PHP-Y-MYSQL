@@ -8,25 +8,30 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="inicio.php">
           <span class="fas fa-house-user"></span> Inicio <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="contactos.php">
           <span class="fas fa-id-card-alt"></span> Contactos
         </a>
       </li>
       
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="categorias.php">
           <span class="fas fa-layer-group"></span> Categorias
         </a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="importar_exportar.php">
           <span class="fa-solid fa-file-csv"></span> Importar/Exportar
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="procesos/logout/logout.php">
+          <span class="fa-solid fa-right-from-bracket"></span> Salir
         </a>
       </li>
     </ul>

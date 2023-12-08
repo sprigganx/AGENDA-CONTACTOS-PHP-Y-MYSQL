@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['id_usuario'])) {
+        // El usuario no ha iniciado sesión, redirigir al formulario de inicio de sesión
+        header("Location: login.php");
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +21,6 @@
 <body>
     <div class="container">
         <?php require_once "menu.php"; ?>
-
         <div class="jumbotron">
             <h1 class="display-4">Importar/Exportar</h1>
             <hr class="my-4"><br><br>
@@ -31,5 +40,4 @@
         </div>
     </div>
 </body>
-
 </html>
