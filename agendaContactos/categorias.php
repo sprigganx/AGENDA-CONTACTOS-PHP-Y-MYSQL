@@ -1,8 +1,6 @@
 <?php
     session_start();
-
     if (!isset($_SESSION['id_usuario'])) {
-        // El usuario no ha iniciado sesión, redirigir al formulario de inicio de sesión
         header("Location: login.php");
         exit();
     }
@@ -17,7 +15,6 @@
     <title>Categorias Conctactos</title>
     <?php require_once "archivosDependencias.php"; ?>
 </head>
-
 <body>
     <div class="container">
         <?php require_once "menu.php"; ?>

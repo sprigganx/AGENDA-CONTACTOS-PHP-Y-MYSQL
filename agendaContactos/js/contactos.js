@@ -19,7 +19,6 @@ $(document).ready(function(){
 	});
 });
 
-
 function agregarContacto(){
 	$.ajax({
 		type: "POST",

@@ -1,5 +1,4 @@
 <?php
-
     require_once "Conexion.php";
 
     class Categorias extends Conexion{
@@ -55,6 +54,5 @@
 			$respuesta = $query->execute();
 			return $respuesta;
 		}
-		
     }
 ?>

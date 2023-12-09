@@ -1,3 +1,8 @@
+<?php
+$usuariosModeradores = [3];
+$esModerador = in_array($_SESSION['id_usuario'], $usuariosModeradores);
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(247, 144, 144);">
   <a class="navbar-brand" href="inicio.php">
     <span class="fa-solid fa-address-book fa-3x"></span>
@@ -29,11 +34,14 @@
           <span class="fa-solid fa-file-csv"></span> Importar/Exportar
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="registro_actividad.php">
-          <span class="fa-solid fa-chart-line"></span> Registro Actividad
-        </a>
-      </li>
+      <?php if ($esModerador): ?>
+        <!-- Muestra la pestaña solo si el usuario es moderador -->
+        <li class="nav-item">
+          <a class="nav-link" href="moderacion.php">
+            <span class="fa-solid fa-user-tie"></span> Moderacion
+          </a>
+        </li>
+      <?php endif; ?>
       <li class="nav-item">
         <a class="nav-link" href="procesos/logout/logout.php">
           <span class="fa-solid fa-right-from-bracket"></span> Salir

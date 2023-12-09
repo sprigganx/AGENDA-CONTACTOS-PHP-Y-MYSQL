@@ -1,5 +1,4 @@
 <?php
-
     class Conexion{
         public function conectar(){
             $servidor = "localhost";
@@ -11,5 +10,4 @@
             return $conexion;
         }
     }
-
 ?>
