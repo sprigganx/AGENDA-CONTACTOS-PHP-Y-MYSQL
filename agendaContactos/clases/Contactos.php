@@ -3,26 +3,29 @@
 
 	class Contactos extends Conexion {
 		
-		public function agregarContacto($datos) {
+		public function agregarContacto($datos){
 			$conexion = Conexion::conectar();
 
 			$sql = "INSERT INTO t_contactos (id_categoria,
+											id_usuario,
 											nombre,
 											paterno,
 											materno,
 											telefono,
 											email)
-					VALUES (?, ?, ?, ?, ?, ?)";
+					VALUES (?, ?, ?, ?, ?, ?, ?)";
 			$query = $conexion->prepare($sql);
-			$query->bind_param('isssss', $datos['idCategoria'],
-										 $datos['nombre'],
-										 $datos['paterno'],
-										 $datos['materno'],
-										 $datos['telefono'],
-										 $datos['email']);
+			$query->bind_param('iisssss', $datos['idCategoria'],
+										$datos['idUsuario'],
+										$datos['nombre'],
+										$datos['paterno'],
+										$datos['materno'],
+										$datos['telefono'],
+										$datos['email']);
 			$respuesta = $query->execute();
 			return $respuesta;
 		}
+
 
 		public function eliminarContacto($idContacto) {
 			$conexion = Conexion::conectar();

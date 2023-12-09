@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename=contactos.csv");
@@ -6,6 +7,7 @@ header("Content-Disposition: attachment; filename=contactos.csv");
 require_once "../../clases/Conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
+$idUsuario = $_SESSION['id_usuario'];
 
 $sql = "SELECT 
     contactos.paterno AS paterno,
@@ -18,7 +20,9 @@ $sql = "SELECT
 FROM
     t_contactos AS contactos
         INNER JOIN
-    t_categorias AS categorias ON contactos.id_categoria = categorias.id_categoria";
+    t_categorias AS categorias ON contactos.id_categoria = categorias.id_categoria
+WHERE
+    contactos.id_usuario = $idUsuario";
 
 $result = mysqli_query($conexion, $sql);
 
@@ -26,10 +30,8 @@ $result = mysqli_query($conexion, $sql);
 $output = fopen("php://output", "w");
 
 $delimiter = ";";
-
 // Encabezados CSV
 fputcsv($output, array('Apellido paterno', 'Apellido materno', 'Nombre', 'Telefono', 'Email', 'Categoria', 'Descripcion'), $delimiter);
-
 // Filas CSV
 while ($mostrar = mysqli_fetch_assoc($result)) {
     // Usar el delimitador personalizado
@@ -38,7 +40,5 @@ while ($mostrar = mysqli_fetch_assoc($result)) {
 
 // Cerrar el buffer de salida
 fclose($output);
-
-// Cerrar la conexión a la base de datos
 mysqli_close($conexion);
 ?>

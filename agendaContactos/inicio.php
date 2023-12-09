@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="bdsjs/img/spriggan_icon.png">
-    <title>Agenda de conctactos web</title>
+    <title>Inicio</title>
     <?php require_once "archivosDependencias.php"; ?>
 </head>
 

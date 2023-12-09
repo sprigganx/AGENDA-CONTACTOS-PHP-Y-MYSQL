@@ -11,6 +11,8 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark justify-content-center" style="background-color: rgb(247, 144, 144);">
     <br><br><br>
+    <span class="fa-solid fa-circle-user"> Iniciar Sesion</span>
+    <br>
     </nav>
     <div class="jumbotron justify-content-center">
       <div class="row justify-content-center">
@@ -34,6 +36,7 @@
         </div>
       </div>
     </div>
+    <p class="text-center">Agenda de contactos con php y mysql &copy; 2023 José Castillo</p>
   </div>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

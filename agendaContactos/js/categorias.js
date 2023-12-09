@@ -17,22 +17,22 @@ $(document).ready(function(){
 	});
 });
 
-function agregarCategoria(){
-	$.ajax({
-		type: "POST",
-		data: $('#frmAgregarCategoria').serialize(),
-		url: "procesos/categorias/agregarCategoria.php",
-		success:function(respuesta){
-			respuesta = respuesta.trim();
-			if(respuesta == 1){
-				$('#frmAgregarCategoria')[0].reset();
-        		$('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
-				swal(":D","Se agrego con éxito","success");
-			}else{
-				swal(":(","No se pudo agregar","error");
-			}
-		}
-	});
+function agregarCategoria() {
+    $.ajax({
+        type: "POST",
+        data: $('#frmAgregarCategoria').serialize(),
+        url: "procesos/categorias/agregarCategoria.php",
+        success: function(respuesta) {
+            respuesta = respuesta.trim();
+            if (respuesta == 1) {
+                $('#frmAgregarCategoria')[0].reset();
+                $('#cargaTablaCategorias').load('vistas/categorias/tablaCategorias.php');
+                swal(":D", "Se agregó con éxito", "success");
+            } else {
+                swal(":(", "No se pudo agregar", "error");
+            }
+        }
+    });
 }
 
 function actualizarCategoria(){

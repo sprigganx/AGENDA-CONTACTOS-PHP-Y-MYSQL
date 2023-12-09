@@ -1,14 +1,15 @@
 <?php 
-	
+	session_start();
 	require_once "../../clases/Conexion.php";
 	$con = new Conexion();
 	$conexion = $con->conectar();
-
+	$idUsuario = $_SESSION['id_usuario'];
 	$idCategoria = $_GET['idCategoria'];
 
 	$sql = "SELECT id_categoria,
 					nombre 
-			FROM t_categorias 
+			FROM t_categorias
+			WHERE id_usuario = $idUsuario
 			ORDER BY nombre";
 	$result = mysqli_query($conexion, $sql);
  ?>

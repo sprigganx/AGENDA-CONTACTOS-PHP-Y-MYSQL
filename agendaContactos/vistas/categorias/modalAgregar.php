@@ -1,5 +1,3 @@
-
-
 <!-- Modal -->
 <div class="modal fade" id="modalAgregarCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -16,6 +14,7 @@
             <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control">
             <label for="descripcion">Descripción</label>
             <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+            <input type="hidden" id="idUsuario" name="idUsuario" value="<?php echo $_SESSION['id_usuario']; ?>">
         </form>
       </div>
       <div class="modal-footer">

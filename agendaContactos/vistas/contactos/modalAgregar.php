@@ -1,5 +1,3 @@
-
-
 <!-- Modal -->
 <div class="modal fade" id="modalAgregarContacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -23,6 +21,7 @@
             <input type="text" class="form-control" id="telefono" name="telefono">
             <label for="email">Email</label>
             <input type="text" class="form-control" id="email" name="email">
+            <input type="hidden" id="idUsuario" name="idUsuario" value="<?php echo $_SESSION['id_usuario']; ?>">
         </form>
       </div>
       <div class="modal-footer">

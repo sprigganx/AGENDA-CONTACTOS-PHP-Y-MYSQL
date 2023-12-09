@@ -30,6 +30,11 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="registro_actividad.php">
+          <span class="fa-solid fa-chart-line"></span> Registro Actividad
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="procesos/logout/logout.php">
           <span class="fa-solid fa-right-from-bracket"></span> Salir
         </a>

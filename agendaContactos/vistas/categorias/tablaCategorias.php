@@ -1,11 +1,19 @@
 <?php 
-	require_once "../../clases/Conexion.php";
-	$objCon = new Conexion();
-	$conexion = $objCon->conectar();
+    require_once "../../clases/Conexion.php";
+    session_start();
+    if (!isset($_SESSION['id_usuario'])) {
+        // El usuario no ha iniciado sesión, redirigir al formulario de inicio de sesión
+        header("Location: login.php");
+        exit();
+    }
+    $objCon = new Conexion();
+    $conexion = $objCon->conectar();
+    $idUsuario = $_SESSION['id_usuario'];
 
-	$sql = "SELECT nombre, descripcion, id_categoria 
-			FROM t_categorias";
-	$result = mysqli_query($conexion, $sql); 
+    $sql = "SELECT nombre, descripcion, id_categoria 
+            FROM t_categorias
+            WHERE id_usuario = $idUsuario"; // Filtrar por el id_usuario
+    $result = mysqli_query($conexion, $sql); 
 ?>
 
 <div class="card">
@@ -22,9 +30,9 @@
                 </thead>
                 <tbody>
                 <?php
-					while($mostrar = mysqli_fetch_array($result)) {  
-						$idCategoria = $mostrar['id_categoria']; 
-				?>
+                    while($mostrar = mysqli_fetch_array($result)) {  
+                        $idCategoria = $mostrar['id_categoria']; 
+                ?>
                     <tr>
                         <td><?php echo $mostrar['nombre'] ?></td>
                         <td><?php echo $mostrar['descripcion'] ?></td>
@@ -40,8 +48,8 @@
                         </td>
                     </tr>
                 <?php 
-				    }
-				?>
+                    }
+                ?>
                 </tbody>
             </table>
         </div>

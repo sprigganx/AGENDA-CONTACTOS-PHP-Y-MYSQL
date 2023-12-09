@@ -4,16 +4,16 @@
 
     class Categorias extends Conexion{
 		
-        public function agregarCategoria($datos){
-            $conexion = Conexion::conectar();
-            $sql = "INSERT INTO t_categorias (nombre, descripcion) 
-					VALUES (?, ?)";
+		public function agregarCategoria($datos){
+			$conexion = Conexion::conectar();
+			$sql = "INSERT INTO t_categorias (id_usuario, nombre, descripcion, fechaInsert) 
+					VALUES (?, ?, ?, NOW())";
 			$query = $conexion->prepare($sql);
-			$query->bind_param('ss', $datos['nombre'],
-									 $datos['descripcion']);
+			$query->bind_param('iss', $datos['idUsuario'], $datos['nombre'], $datos['descripcion']);
 			$respuesta = $query->execute();
 			return $respuesta;
-        }
+		}
+		
 
         public function eliminaCategoria($idCategoria) {
 			$conexion = Conexion::conectar();
