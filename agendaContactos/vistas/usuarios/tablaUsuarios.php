@@ -1,18 +1,19 @@
 <?php 
     require_once "../../clases/Conexion.php";
+    require_once "../../clases/Usuarios.php";
     session_start();
+
     if (!isset($_SESSION['id_usuario'])) {
         // El usuario no ha iniciado sesión, redirigir al formulario de inicio de sesión
         header("Location: login.php");
         exit();
     }
-    $objCon = new Conexion();
-    $conexion = $objCon->conectar();
     $idUsuario = $_SESSION['id_usuario'];
 
-    $sql = "SELECT id_usuario, nombre_usuario, contrasena_usuario, correo_usuario
-            FROM t_usuarios";
-    $result = mysqli_query($conexion, $sql); 
+    $objCon = new Conexion();
+    $conexion = $objCon->conectar();
+    $Usuarios = new Usuarios();
+    $result = $Usuarios->obtenerUsuarios();
 ?>
 
 <div class="card">

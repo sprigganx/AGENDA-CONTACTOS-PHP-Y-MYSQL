@@ -1,29 +1,15 @@
 <?php
-session_start();
+    require_once "../../clases/Conexion.php";
+    require_once "../../clases/Contactos.php";
+    session_start();
 
-require_once "../../clases/Conexion.php";
-$con = new Conexion();
-$conexion = $con->conectar();
+    $Contactos = new Contactos();
+    $con = new Conexion();
+    $conexion = $con->conectar();
 
-// Obtener el ID del usuario de la sesión
-$idUsuario = $_SESSION['id_usuario'];
-
-$sql = "SELECT 
-    contactos.paterno AS paterno,
-    contactos.materno AS materno,
-    contactos.nombre AS nombre,
-    contactos.telefono AS telefono,
-    contactos.email AS email,
-    categorias.nombre AS categoria,
-    contactos.id_contacto AS idContacto
-FROM
-    t_contactos AS contactos
-INNER JOIN
-    t_categorias AS categorias 
-ON contactos.id_categoria = categorias.id_categoria
-WHERE
-    contactos.id_usuario = $idUsuario";  // Filtrar por el ID del usuario
-$result = mysqli_query($conexion, $sql);
+    // Obtener el ID del usuario de la sesión
+    $idUsuario = $_SESSION['id_usuario'];
+    $result = $Contactos->obtenerContactos($idUsuario);
 ?>
 
 <div class="card">

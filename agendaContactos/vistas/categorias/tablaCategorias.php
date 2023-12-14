@@ -1,18 +1,18 @@
 <?php 
     require_once "../../clases/Conexion.php";
+    require_once "../../clases/Categorias.php";
     session_start();
+    
     if (!isset($_SESSION['id_usuario'])) {
         header("Location: login.php");
         exit();
     }
-    $objCon = new Conexion();
-    $conexion = $objCon->conectar();
     $idUsuario = $_SESSION['id_usuario'];
 
-    $sql = "SELECT nombre, descripcion, id_categoria 
-            FROM t_categorias
-            WHERE id_usuario = $idUsuario"; // Filtrar por el id_usuario
-    $result = mysqli_query($conexion, $sql); 
+    $objCon = new Conexion();
+    $conexion = $objCon->conectar();
+    $Categorias = new Categorias();
+    $result = $Categorias->obtenerCategorias($idUsuario);
 ?>
 
 <div class="card">
